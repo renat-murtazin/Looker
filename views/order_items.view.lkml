@@ -115,6 +115,30 @@ view: order_items {
     drill_fields: [detail*]
   }
 
+  ## Measures from the task "Task 2: Dimensions and measures"
+  measure: total_sales_price {
+    type: sum
+    description: "Total sales from items sold"
+    sql: ${TABLE}."SALE_PRICE" ;;
+    value_format_name: usd
+  }
+
+  measure: average_sales_price {
+    type: average
+    description: "Average sales from items sold"
+    sql: ${TABLE}."SALE_PRICE" ;;
+    value_format_name: usd
+  }
+
+  measure: cumulative_total_sales {
+    type: running_total
+    description: "Cumulative total sales from items sold (running total)"
+    sql: ${total_sales_price} ;;
+    value_format_name: usd
+    drill_fields: [detail*]
+  }
+
+  ## ---
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
