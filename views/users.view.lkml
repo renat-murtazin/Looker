@@ -84,6 +84,23 @@ view: users {
     sql: ${TABLE}."ZIP" ;;
   }
 
+  ## Dimensions from the task "Task 2: Dimensions and measures"
+  dimension: city_state {
+    type: string
+    description: "Combines City and State into a single Field"
+    sql: ${TABLE}."CITY" || ' ' || ${TABLE}."STATE" ;;
+  }
+
+  dimension: age_tier {
+    type: tier
+    description: "Groups individual ages into the following age group"
+    tiers: [18,25,35, 45, 55, 65, 75, 90]
+    style: integer
+    sql: ${TABLE}."AGE" ;;
+  }
+
+  ## -----
+
   measure: count {
     type: count
     drill_fields: [id, last_name, first_name, events.count, order_items.count]
