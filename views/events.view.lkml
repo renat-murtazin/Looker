@@ -100,6 +100,15 @@ view: events {
     sql: ${TABLE}."ZIP" ;;
   }
 
+   ## Dimensions from the task "Task 2: Dimensions and measures"
+  dimension: city_state {
+    type: string
+    description: "Combines City and State into a single Field"
+    sql: ${TABLE}."CITY" || ', ' || ${TABLE}."STATE" ;;
+  }
+
+  ## ---
+
   measure: count {
     type: count
     drill_fields: [id, users.last_name, users.id, users.first_name]

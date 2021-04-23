@@ -92,6 +92,24 @@ view: order_items {
     sql: ${TABLE}."USER_ID" ;;
   }
 
+  ## Dimensions from the task "Task 2: Dimensions and measures"
+  dimension: is_returned {
+    type: yesno
+    description: "Calculates whether the order was returned or not"
+    sql: ${TABLE}."RETURNED_AT" != null ;;
+  }
+
+  dimension_group: shipping_days {
+    type: duration
+    description: "Calculates the number of days between the order ship date and the order delivered date"
+    intervals: [
+      day
+    ]
+    sql_start: ${TABLE}."SHIPPED_AT" ;;
+    sql_end: ${TABLE}."DELIVERED_AT";;
+  }
+  ## -----
+
   measure: count {
     type: count
     drill_fields: [detail*]
