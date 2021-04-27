@@ -152,6 +152,16 @@ view: order_items {
     drill_fields: [detail*]
   }
 
+  measure: total_gross_margin  {
+    label: "Total Gross Margin Amount"
+    type: sum
+    description: "Total difference between the total revenue from completed sales and the cost of the goods that were sold"
+    sql: ${sale_price}-${inventory_items.cost} ;;
+    filters: [is_completed: "Yes"]
+    value_format_name: usd
+    drill_fields: [detail*]
+  }
+
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
