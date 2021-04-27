@@ -180,6 +180,14 @@ view: order_items {
     drill_fields: [detail*]
   }
 
+  measure: count_returned_items {
+    label: "Number of Items Returned"
+    type: count
+    description: "Number of items that were returned by dissatisfied customers"
+    filters: [is_completed: "Yes"]
+    drill_fields: [detail*]
+  }
+
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
