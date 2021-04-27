@@ -10,6 +10,8 @@ datagroup: looker_intensive2_renat_murtazin_default_datagroup {
 
 persist_with: looker_intensive2_renat_murtazin_default_datagroup
 
+explore: users {}
+
 explore: order_items {
   join: inventory_items {
     type: left_outer
@@ -35,8 +37,6 @@ explore: order_items {
     relationship: many_to_one
   }
 }
-
-explore: users {}
 
 
 # explore: distribution_centers {}

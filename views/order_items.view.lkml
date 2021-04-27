@@ -92,7 +92,7 @@ view: order_items {
     sql: ${TABLE}."USER_ID" ;;
   }
 
-  ## Dimensions from the task "Task 2: Dimensions and measures"
+  # ----- Custom dimensions -----
   dimension: is_returned {
     type: yesno
     description: "Calculates whether the order was returned or not"
@@ -108,14 +108,19 @@ view: order_items {
     sql_start: ${TABLE}."SHIPPED_AT" ;;
     sql_end: ${TABLE}."DELIVERED_AT";;
   }
-  ## -----
 
+  dimension: is_completed {
+    type:  yesno
+    description: "flag for completed orders only"
+    sql: UPPER(${status}) in ('CANCELLED','RETURNED') ;;
+  }
+
+  # ----- Measures -----
   measure: count {
     type: count
     drill_fields: [detail*]
   }
 
-  ## Measures from the task "Task 2: Dimensions and measures"
   measure: total_sales_price {
     type: sum
     description: "Total sales from items sold"
@@ -138,7 +143,15 @@ view: order_items {
     drill_fields: [detail*]
   }
 
-  ## ---
+  measure: total_gross_revenue {
+    type: sum
+    description: "Total revenue from completed sales"
+    sql: ${sale_price} ;;
+    filters: [is_completed: "Yes"]
+    value_format_name: usd
+    drill_fields: [detail*]
+  }
+
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
