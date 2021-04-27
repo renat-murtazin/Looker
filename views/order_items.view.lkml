@@ -214,6 +214,14 @@ view: order_items {
     drill_fields: [detail*]
   }
 
+  measure: average_spend_per_customer {
+    type: number
+    description: "Total Sale Price / total number of customers"
+    sql: ${total_sales_price}/nullif(${users.count},0) ;;
+    value_format_name: usd
+    drill_fields: [detail*]
+  }
+
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
