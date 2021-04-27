@@ -205,6 +205,15 @@ view: order_items {
     drill_fields: [detail*]
   }
 
+  measure: customers_with_returns_rate {
+    label: "Customers with Returns %"
+    type: number
+    description: "Number of Customer Returning Items / total number of customers"
+    sql: ${count_customres_with_returns}/nullif(${users.count},0) ;;
+    value_format_name: percent_2
+    drill_fields: [detail*]
+  }
+
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
