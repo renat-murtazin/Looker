@@ -171,6 +171,15 @@ view: order_items {
     drill_fields: [detail*]
   }
 
+  measure: gross_margin_percent {
+    label: "Gross Margin %"
+    type: number
+    description: "Total Gross Margin Amount / Total Gross Revenue"
+    sql: ${total_gross_margin}/nullif(${total_gross_revenue},0)*100.0 ;;
+    value_format_name: percent_2
+    drill_fields: [detail*]
+  }
+
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
