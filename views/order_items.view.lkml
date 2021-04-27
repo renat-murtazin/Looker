@@ -189,10 +189,19 @@ view: order_items {
   }
 
   measure: item_returned_rate {
+    label: "Returned items %"
     type: number
     description: "Number of Items Returned / total number of items sold"
     sql: ${count_returned_items}/nullif(${count},0) ;;
     value_format_name: percent_2
+    drill_fields: [detail*]
+  }
+
+  measure: count_customres_with_returns {
+    type: count_distinct
+    description: "Number of users who have returned an item at some point"
+    sql: ${user_id} ;;
+    filters: [is_returned: "Yes"]
     drill_fields: [detail*]
   }
 
