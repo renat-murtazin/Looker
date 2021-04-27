@@ -175,7 +175,7 @@ view: order_items {
     label: "Gross Margin %"
     type: number
     description: "Total Gross Margin Amount / Total Gross Revenue"
-    sql: ${total_gross_margin}/nullif(${total_gross_revenue},0)*100.0 ;;
+    sql: ${total_gross_margin}/nullif(${total_gross_revenue},0) ;;
     value_format_name: percent_2
     drill_fields: [detail*]
   }
@@ -185,6 +185,14 @@ view: order_items {
     type: count
     description: "Number of items that were returned by dissatisfied customers"
     filters: [is_returned: "Yes"]
+    drill_fields: [detail*]
+  }
+
+  measure: item_returned_rate {
+    type: number
+    description: "Number of Items Returned / total number of items sold"
+    sql: ${count_returned_items}/nullif(${count},0) ;;
+    value_format_name: percent_2
     drill_fields: [detail*]
   }
 
