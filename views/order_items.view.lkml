@@ -162,6 +162,15 @@ view: order_items {
     drill_fields: [detail*]
   }
 
+  measure: average_gross_margin {
+    type: average
+    description: "Average Gross Margin  Average difference between the total revenue from completed sales and the cost of the goods that were sold"
+    sql: ${sale_price}-${inventory_items.cost} ;;
+    filters: [is_completed: "Yes"]
+    value_format_name: usd
+    drill_fields: [detail*]
+  }
+
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
