@@ -83,8 +83,25 @@ view: inventory_items {
     sql: ${TABLE}."SOLD_AT" ;;
   }
 
+  # ----- Measures -----
   measure: count {
     type: count
+    drill_fields: [id, product_name, products.name, products.id, order_items.count]
+  }
+
+  measure: total_cost {
+    type: sum
+    description: "Total cost of items sold from inventory"
+    sql: ${cost} ;;
+    value_format_name: usd
+    drill_fields: [id, product_name, products.name, products.id, order_items.count]
+  }
+
+  measure: average_cost  {
+    type: average
+    description: "Average cost of items sold from inventory"
+    sql: ${cost} ;;
+    value_format_name: usd
     drill_fields: [id, product_name, products.name, products.id, order_items.count]
   }
 }
