@@ -96,7 +96,7 @@ view: order_items {
   dimension: is_returned {
     type: yesno
     description: "Calculates whether the order was returned or not"
-    sql: ${TABLE}."RETURNED_AT" != null ;;
+    sql: not ${TABLE}."RETURNED_AT" is null;;
   }
 
   dimension_group: shipping_days {
@@ -112,7 +112,7 @@ view: order_items {
   dimension: is_completed {
     type:  yesno
     description: "flag for completed orders only"
-    sql: UPPER(${status}) in ('CANCELLED','RETURNED') ;;
+    sql: UPPER(${status}) not in ('CANCELLED','RETURNED') ;;
   }
 
   # ----- Measures -----
@@ -184,7 +184,7 @@ view: order_items {
     label: "Number of Items Returned"
     type: count
     description: "Number of items that were returned by dissatisfied customers"
-    filters: [is_completed: "Yes"]
+    filters: [is_returned: "Yes"]
     drill_fields: [detail*]
   }
 
