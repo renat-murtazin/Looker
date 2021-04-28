@@ -85,10 +85,16 @@ view: users {
   }
 
   ## Dimensions from the task "Task 2: Dimensions and measures"
+  dimension: full_name {
+    type: string
+    description: "Combines first name and last name of a user into a single field"
+    sql: ${first_name} || ' ' || ${last_name} ;;
+  }
+
   dimension: city_state {
     type: string
     description: "Combines City and State into a single Field"
-    sql: ${TABLE}."CITY" || ', ' || ${TABLE}."STATE" ;;
+    sql: %${city} || ', ' || ${state} ;;
   }
 
   dimension: age_tier {
@@ -96,7 +102,7 @@ view: users {
     description: "Groups individual ages into the following age group"
     tiers: [18,25,35, 45, 55, 65, 75, 90]
     style: integer
-    sql: ${TABLE}."AGE" ;;
+    sql: ${age};;
   }
 
   ## -----

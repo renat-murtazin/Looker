@@ -104,7 +104,7 @@ view: events {
   dimension: city_state {
     type: string
     description: "Combines City and State into a single Field"
-    sql: ${TABLE}."CITY" || ', ' || ${TABLE}."STATE" ;;
+    sql: ${city} || ', ' || ${state} ;;
   }
 
   ## ---
