@@ -12,16 +12,25 @@ view: distribution_centers {
   dimension: latitude {
     type: number
     sql: ${TABLE}."LATITUDE" ;;
+    hidden: yes
   }
 
   dimension: longitude {
     type: number
     sql: ${TABLE}."LONGITUDE" ;;
+    hidden: yes
   }
 
   dimension: name {
     type: string
     sql: ${TABLE}."NAME" ;;
+  }
+
+  # ----- Custom Dimensions -----
+  dimension: location {
+    type: location
+    sql_latitude: ${latitude} ;;
+    sql_longitude: ${longitude} ;;
   }
 
   measure: count {
