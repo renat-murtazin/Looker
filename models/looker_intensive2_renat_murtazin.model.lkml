@@ -13,27 +13,20 @@ persist_with: looker_intensive2_renat_murtazin_default_datagroup
 explore: users {}
 
 explore: order_items {
+  view_label: "Orders"
+  description: "Detailed information about orders"
+
   join: inventory_items {
+    view_label: "Items"
     type: left_outer
     sql_on: ${order_items.inventory_item_id} = ${inventory_items.id} ;;
     relationship: many_to_one
   }
 
   join: users {
+    view_label: "Customers"
     type: left_outer
     sql_on: ${order_items.user_id} = ${users.id} ;;
-    relationship: many_to_one
-  }
-
-  join: products {
-    type: left_outer
-    sql_on: ${inventory_items.product_id} = ${products.id} ;;
-    relationship: many_to_one
-  }
-
-  join: distribution_centers {
-    type: left_outer
-    sql_on: ${products.distribution_center_id} = ${distribution_centers.id} ;;
     relationship: many_to_one
   }
 }
