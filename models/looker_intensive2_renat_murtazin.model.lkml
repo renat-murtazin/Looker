@@ -10,7 +10,28 @@ datagroup: looker_intensive2_renat_murtazin_default_datagroup {
 
 persist_with: looker_intensive2_renat_murtazin_default_datagroup
 
-explore: users {}
+explore: users {
+  view_label: "Customers"
+  description: "Focus on user behavior and attributes"
+
+  join: order_items {
+    view_label: "Orders"
+    type: left_outer
+    sql_on: ${order_items.user_id} = ${users.id} ;;
+    relationship: one_to_many
+  }
+  join: inventory_items {
+    view_label: "Items"
+    type: left_outer
+    sql_on: ${inventory_items.id} = ${order_items.inventory_item_id} ;;
+    relationship: many_to_one
+  }
+  join: events {
+    type: left_outer
+    sql_on: ${users.id} = ${events.user_id} ;;
+    relationship: one_to_many
+  }
+}
 
 explore: order_items {
   view_label: "Orders"
@@ -22,7 +43,6 @@ explore: order_items {
     sql_on: ${order_items.inventory_item_id} = ${inventory_items.id} ;;
     relationship: many_to_one
   }
-
   join: users {
     view_label: "Customers"
     type: left_outer
