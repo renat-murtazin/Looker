@@ -11,6 +11,7 @@ datagroup: looker_intensive2_renat_murtazin_default_datagroup {
 persist_with: looker_intensive2_renat_murtazin_default_datagroup
 
 explore: users {
+  label: "Customers"
   view_label: "Customers"
   description: "Focus on user behavior and attributes"
 
