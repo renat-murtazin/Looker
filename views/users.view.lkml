@@ -84,7 +84,7 @@ view: users {
     sql: ${TABLE}."ZIP" ;;
   }
 
-  ## Dimensions from the task "Task 2: Dimensions and measures"
+  # ----- Custom dimensions ----
   dimension: full_name {
     type: string
     description: "Combines first name and last name of a user into a single field"
@@ -105,7 +105,7 @@ view: users {
     sql: ${age};;
   }
 
-  ## -----
+  # ----- Measures ------
 
   measure: count {
     type: count
