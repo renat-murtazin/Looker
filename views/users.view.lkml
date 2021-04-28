@@ -12,17 +12,20 @@ view: users {
   dimension: age {
     type: number
     sql: ${TABLE}."AGE" ;;
+    group_label: "General info"
   }
 
   dimension: city {
     type: string
     sql: ${TABLE}."CITY" ;;
+    group_label: "Address"
   }
 
   dimension: country {
     type: string
     map_layer_name: countries
     sql: ${TABLE}."COUNTRY" ;;
+    group_label: "Address"
   }
 
   dimension_group: created {
@@ -47,31 +50,37 @@ view: users {
   dimension: first_name {
     type: string
     sql: ${TABLE}."FIRST_NAME" ;;
+    group_label: "General info"
   }
 
   dimension: gender {
     type: string
     sql: ${TABLE}."GENDER" ;;
+    group_label: "General info"
   }
 
   dimension: last_name {
     type: string
     sql: ${TABLE}."LAST_NAME" ;;
+    group_label: "General info"
   }
 
   dimension: latitude {
     type: number
     sql: ${TABLE}."LATITUDE" ;;
+    group_label: "Address"
   }
 
   dimension: longitude {
     type: number
     sql: ${TABLE}."LONGITUDE" ;;
+    group_label: "Address"
   }
 
   dimension: state {
     type: string
     sql: ${TABLE}."STATE" ;;
+    group_label: "Address"
   }
 
   dimension: traffic_source {
@@ -82,6 +91,7 @@ view: users {
   dimension: zip {
     type: zipcode
     sql: ${TABLE}."ZIP" ;;
+    group_label: "Address"
   }
 
   # ----- Custom dimensions ----
@@ -89,12 +99,21 @@ view: users {
     type: string
     description: "Combines first name and last name of a user into a single field"
     sql: ${first_name} || ' ' || ${last_name} ;;
+    group_label: "General info"
   }
 
   dimension: city_state {
     type: string
     description: "Combines City and State into a single Field"
     sql: %${city} || ', ' || ${state} ;;
+    group_label: "Address"
+  }
+
+  dimension: location {
+    type: location
+    sql_latitude: ${latitude} ;;
+    sql_longitude: ${longitude} ;;
+    group_label: "Address"
   }
 
   dimension: age_tier {
@@ -103,6 +122,7 @@ view: users {
     tiers: [18,25,35, 45, 55, 65, 75, 90]
     style: integer
     sql: ${age};;
+    group_label: "General info"
   }
 
   # ----- Measures ------
