@@ -96,7 +96,7 @@ view: order_items {
   dimension: is_returned {
     type: yesno
     description: "Calculates whether the order was returned or not"
-    sql: not ${TABLE}."RETURNED_AT" is null;;
+    sql: not ${returned_date} is null;;
   }
 
   dimension_group: shipping_days {
@@ -105,8 +105,8 @@ view: order_items {
     intervals: [
       day
     ]
-    sql_start: ${TABLE}."SHIPPED_AT" ;;
-    sql_end: ${TABLE}."DELIVERED_AT";;
+    sql_start: ${shipped_date} ;;
+    sql_end: ${delivered_date};;
   }
 
   dimension: is_completed {
@@ -124,14 +124,14 @@ view: order_items {
   measure: total_sales_price {
     type: sum
     description: "Total sales from items sold"
-    sql: ${TABLE}."SALE_PRICE" ;;
+    sql: ${sale_price} ;;
     value_format_name: usd
   }
 
   measure: average_sales_price {
     type: average
     description: "Average sales from items sold"
-    sql: ${TABLE}."SALE_PRICE" ;;
+    sql: ${sale_price} ;;
     value_format_name: usd
   }
 
