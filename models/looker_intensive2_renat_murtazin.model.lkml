@@ -48,6 +48,7 @@ explore: order_items {
     type: left_outer
     sql_on: ${order_items.user_id} = ${users.id} ;;
     relationship: many_to_one
+    fields: [main_user_info*]
   }
 }
 

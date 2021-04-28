@@ -131,4 +131,21 @@ view: users {
     type: count
     drill_fields: [id, last_name, first_name, events.count, order_items.count]
   }
+
+  # ------ Sets ------
+  set: main_user_info {
+    fields: [
+      id,
+      full_name,
+      gender,
+      age,
+      age_tier,
+      city,
+      state,
+      city_state,
+      country,
+      traffic_source,
+      count
+    ]
+  }
 }
