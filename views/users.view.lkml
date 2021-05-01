@@ -105,7 +105,7 @@ view: users {
   dimension: city_state {
     type: string
     description: "Combines City and State into a single Field"
-    sql: %${city} || ', ' || ${state} ;;
+    sql: ${city} || ', ' || ${state} ;;
     group_label: "Address"
   }
 
