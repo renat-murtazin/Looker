@@ -104,4 +104,19 @@ view: inventory_items {
     value_format_name: usd
     drill_fields: [id, product_name, products.name, products.id, order_items.count]
   }
+
+  # ----- Sets for joins -----
+  set: fileds_for_customers_explore {
+    fields: [
+      id,
+      cost,
+      product_brand,
+      product_category,
+      product_id,
+      product_name,
+      count,
+      total_cost,
+      average_cost
+    ]
+  }
 }

@@ -222,7 +222,7 @@ view: order_items {
     drill_fields: [detail*]
   }
 
-  # ----- Sets of fields for drilling ------
+  # ----- Sets of fields for drilling and joins ------
   set: detail {
     fields: [
       id,
@@ -231,6 +231,27 @@ view: order_items {
       users.last_name,
       users.id,
       users.first_name
+    ]
+  }
+  set: fields_for_customers_explore{
+    fields: [
+      id,
+      inventory_item_id,
+      order_id,
+      sale_price,
+      status,
+      user_id,
+      is_returned,
+      is_completed,
+      count,
+      total_sales_price,
+      average_sales_price,
+      cumulative_total_sales,
+      count_returned_items,
+      item_returned_rate,
+      count_customres_with_returns,
+      customers_with_returns_rate,
+      average_spend_per_customer
     ]
   }
 }

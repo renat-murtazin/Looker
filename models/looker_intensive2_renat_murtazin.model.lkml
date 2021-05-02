@@ -20,12 +20,14 @@ explore: users {
     type: left_outer
     sql_on: ${order_items.user_id} = ${users.id} ;;
     relationship: one_to_many
+    fields: [order_items.fields_for_customers_explore*]
   }
   join: inventory_items {
     view_label: "Items"
     type: left_outer
     sql_on: ${inventory_items.id} = ${order_items.inventory_item_id} ;;
     relationship: many_to_one
+    fields: [inventory_items.fileds_for_customers_explore*]
   }
   join: events {
     type: left_outer
