@@ -145,6 +145,7 @@ view: users {
       city_state,
       country,
       traffic_source,
+      created_date,
       count
     ]
   }
