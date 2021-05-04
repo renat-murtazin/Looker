@@ -119,7 +119,7 @@ view: users {
   dimension: age_tier {
     type: tier
     description: "Groups individual ages into the following age group"
-    tiers: [15,25,35,50,65]
+    tiers: [15,26,36,51,66]
     style: integer
     sql: ${age};;
     group_label: "General info"
