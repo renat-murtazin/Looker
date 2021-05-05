@@ -149,7 +149,12 @@ view: order_items {
     sql: ${sale_price} ;;
     filters: [is_completed: "Yes"]
     value_format_name: usd
-    drill_fields: [inventory_items.product_category, total_gross_revenue,gross_margin_percent]
+    drill_fields: [
+        inventory_items.product_category,
+        inventory_items.product_name,
+        total_gross_revenue,
+        gross_margin_percent
+      ]
   }
 
   measure: total_gross_margin  {
