@@ -219,7 +219,7 @@ view: order_items {
     description: "Total Sale Price / total number of customers"
     sql: ${total_sales_price}/nullif(${users.count},0) ;;
     value_format_name: usd
-    drill_fields: [detail*]
+    drill_fields: [customer_groups*]
   }
 
   # ----- Sets of fields for drilling and joins ------
@@ -252,6 +252,16 @@ view: order_items {
       count_customres_with_returns,
       customers_with_returns_rate,
       average_spend_per_customer
+    ]
+  }
+
+  set: customer_groups  {
+    fields: [
+      users.age_tier,
+      users.gender,
+      average_spend_per_customer,
+      total_gross_revenue,
+      total_gross_margin
     ]
   }
 }
