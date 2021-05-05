@@ -31,6 +31,10 @@ view: inventory_items {
   dimension: product_brand {
     type: string
     sql: ${TABLE}."PRODUCT_BRAND" ;;
+    link: {
+      label: "Loog on Google"
+      url: "https://www.google.com/search?q={{ value }}"
+    }
   }
 
   dimension: product_category {
