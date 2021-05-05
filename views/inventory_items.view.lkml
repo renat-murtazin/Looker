@@ -32,8 +32,12 @@ view: inventory_items {
     type: string
     sql: ${TABLE}."PRODUCT_BRAND" ;;
     link: {
-      label: "Loog on Google"
+      label: "Look on Google"
       url: "https://www.google.com/search?q={{ value }}"
+    }
+    link: {
+      label: "Open facebook page"
+      url: "https://www.facebook.com/{{ value }}/"
     }
   }
 
