@@ -81,6 +81,7 @@ view: users {
     type: string
     sql: ${TABLE}."STATE" ;;
     group_label: "Address"
+    map_layer_name: us_states
   }
 
   dimension: traffic_source {
