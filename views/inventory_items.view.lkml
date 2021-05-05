@@ -37,7 +37,7 @@ view: inventory_items {
     }
     link: {
       label: "Open facebook page"
-      url: "https://www.facebook.com/{{ value }}/"
+      url: "https://facebook.com/search/top/?q={{ value }}"
     }
   }
 
